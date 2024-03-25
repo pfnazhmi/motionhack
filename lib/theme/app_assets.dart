@@ -4,6 +4,7 @@ class AppAssets {
   static const onboarding3 = 'assets/images/onboard3.png';
   static const logoApple = 'assets/images/logo_apple.png';
   static const logoGoogle = 'assets/images/logo_google.png';
+  static const logoMidtrans = 'assets/images/midtrans.png';
 
   static const iconLocation = 'assets/svgs/icon-loc.svg';
   static const iconClock = 'assets/svgs/icon-clock.svg';

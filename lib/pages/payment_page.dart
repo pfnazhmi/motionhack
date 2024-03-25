@@ -57,6 +57,11 @@ class _PaymentPageState extends State<PaymentPage> {
               const SizedBox(
                 height: 16,
               ),
+              opsiPengambilan(),
+              const SizedBox(
+                height: 16,
+              ),
+              detailPesanan(context),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -69,79 +74,220 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Pengambilan',
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
-                    ),
+                    Text('Payment Method',
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black)),
                     const SizedBox(height: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (String opsi in opsiPemesanan)
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                selectedPemesanan = opsi;
-                              });
-                            },
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      opsi == 'Delivery'
-                                          ? const Icon(
-                                              Icons.delivery_dining,
-                                              size: 24,
-                                              color: AppColor.primary,
-                                            )
-                                          : const Icon(
-                                              Icons.run_circle_outlined,
-                                              size: 24,
-                                              color: AppColor.primary,
-                                            ),
-                                      const SizedBox(
-                                          width:
-                                              8), // Jarak antara ikon dan teks
-                                      Text(
-                                        opsi,
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ],
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: const Color(0xFF7A7A7A).withOpacity(0.2),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(16),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            AppAssets.logoMidtrans,
+                            width: 50,
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Midtrans',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
                                   ),
-                                  Radio<String>(
-                                    activeColor: AppColor.primary,
-                                    value: opsi,
-                                    groupValue: selectedPemesanan,
-                                    onChanged: (String? value) {
-                                      setState(() {
-                                        selectedPemesanan = value!;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "PT Panganpals",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.grey),
+                                )
+                              ],
                             ),
                           ),
-                      ],
+                          const Icon(
+                            Icons.check_circle,
+                            color: AppColor.primary,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container detailPesanan(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: const Color(0xFF7A7A7A).withOpacity(0.2),
+        ),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Detail Pesanan",
+            style: GoogleFonts.poppins(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 16),
+          detailPayment(context, "Harga", "Rp 30.000", Colors.black),
+          const SizedBox(
+            height: 10,
+          ),
+          detailPayment(
+            context,
+            "Promo",
+            "- Rp 5.000",
+            const Color(0xFF36D183),
+          ),
+          const SizedBox(height: 16),
+          detailPayment(
+            context,
+            "Service fee",
+            "+ Rp 5.000",
+            const Color(0xFF36D183),
+          ),
+          const SizedBox(height: 16),
+          detailPayment(
+            context,
+            "Biaya Ongkir",
+            "+ Rp 5.000",
+            const Color(0xFF36D183),
+          ),
+          const SizedBox(height: 16),
+          detailPayment(
+              context, "Total Transfer", "Rp 35.000", AppColor.primary),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+
+  Row detailPayment(
+      BuildContext context, String title, String data, Color colorData) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: GoogleFonts.poppins(
+              fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
+        ),
+        Text(
+          data,
+          style: GoogleFonts.poppins(
+              fontSize: 16, fontWeight: FontWeight.w600, color: colorData),
+        )
+      ],
+    );
+  }
+
+  Container opsiPengambilan() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: const Color(0xFF7A7A7A).withOpacity(0.2),
+        ),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pengambilan',
+            style: GoogleFonts.poppins(
+                fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+          ),
+          const SizedBox(height: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (String opsi in opsiPemesanan)
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedPemesanan = opsi;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            opsi == 'Delivery'
+                                ? const Icon(
+                                    Icons.delivery_dining,
+                                    size: 24,
+                                    color: AppColor.primary,
+                                  )
+                                : const Icon(
+                                    Icons.run_circle_outlined,
+                                    size: 24,
+                                    color: AppColor.primary,
+                                  ),
+                            const SizedBox(
+                                width: 8), // Jarak antara ikon dan teks
+                            Text(
+                              opsi,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Radio<String>(
+                          activeColor: AppColor.primary,
+                          value: opsi,
+                          groupValue: selectedPemesanan,
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedPemesanan = value!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
