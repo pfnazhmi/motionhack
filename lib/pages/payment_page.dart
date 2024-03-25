@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:motionhack/theme/app_assets.dart';
 import 'package:motionhack/theme/app_color.dart';
+import 'package:motionhack/widget/button_custom.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key});
@@ -21,7 +22,7 @@ class _PaymentPageState extends State<PaymentPage> {
       backgroundColor: const Color(0xFFF6F6F6),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         title: Text(
           'Pembayaran',
           style: GoogleFonts.poppins(
@@ -62,78 +63,89 @@ class _PaymentPageState extends State<PaymentPage> {
                 height: 16,
               ),
               detailPesanan(context),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: const Color(0xFF7A7A7A).withOpacity(0.2),
-                  ),
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Payment Method',
-                        style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black)),
-                    const SizedBox(height: 8),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: const Color(0xFF7A7A7A).withOpacity(0.2),
-                        ),
-                      ),
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            AppAssets.logoMidtrans,
-                            width: 50,
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Midtrans',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 2,
-                                ),
-                                Text(
-                                  "PT Panganpals",
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
-                                )
-                              ],
-                            ),
-                          ),
-                          const Icon(
-                            Icons.check_circle,
-                            color: AppColor.primary,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 16,
               ),
+              paymentMethod(),
+              const SizedBox(
+                height: 24,
+              ),
+              ButtonCustom(label: "Beli sekarang", onTap: () {}, isExpand: true)
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container paymentMethod() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: const Color(0xFF7A7A7A).withOpacity(0.2),
+        ),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Payment Method',
+              style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black)),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: const Color(0xFF7A7A7A).withOpacity(0.2),
+              ),
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Image.asset(
+                  AppAssets.logoMidtrans,
+                  width: 50,
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Midtrans',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "PT Panganpals",
+                        style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ),
+                const Icon(
+                  Icons.check_circle,
+                  color: AppColor.primary,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
