@@ -46,11 +46,30 @@ class ArtikelPage extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              cardArtikel(),
+              cardArtikel(
+                context,
+                "https://picsum.photos/200/300",
+                "Pembagian Sembako - PKH Bandung",
+                "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan bantuan.",
+              ),
               const SizedBox(
                 height: 12,
               ),
-              cardArtikel()
+              cardArtikel(
+                context,
+                "https://picsum.photos/200/300",
+                "Pembagian Sembako - PKH Bandung",
+                "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan",
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              cardArtikel(
+                context,
+                "https://picsum.photos/200/300",
+                "Pembagian Sembako - PKH Bandung",
+                "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan",
+              ),
             ],
           ),
         ),
@@ -58,7 +77,8 @@ class ArtikelPage extends StatelessWidget {
     );
   }
 
-  Padding cardArtikel() {
+  Padding cardArtikel(
+      BuildContext context, String image, String title, String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
@@ -76,7 +96,7 @@ class ArtikelPage extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                    "https://picsum.photos/200/300",
+                    image,
                     fit: BoxFit.cover,
                     width: 120,
                     height: 140,
@@ -90,7 +110,7 @@ class ArtikelPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Pembagian Sembako - PKH Bandung", // Teks Anda yang panjang
+                        title, // Teks Anda yang panjang
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
                           fontSize: 12,
@@ -101,7 +121,7 @@ class ArtikelPage extends StatelessWidget {
                         height: 6,
                       ),
                       Text(
-                        "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan",
+                        text,
                         style: GoogleFonts.poppins(
                           fontSize: 10,
                           fontWeight: FontWeight.w500,
