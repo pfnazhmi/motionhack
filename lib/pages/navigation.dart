@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:motionhack/pages/nav_pages/discover.dart';
+import 'package:motionhack/pages/discover_page.dart';
+import 'package:motionhack/pages/profile_page.dart';
 
 class Navigation extends StatelessWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -55,10 +56,10 @@ class _MyNavigationState extends State<MyNavigation>
       body: PageView(
         controller: _pageController,
         children: const [
-          Discover(),
-          // ProductPage(),
-          // HistoryPage(),
-          // ProfilePage(),
+          DiscoverPage(),
+          // ArticlePage(),
+          // ForumPage(),
+          ProfilePage(),
         ],
         onPageChanged: (index) {
           setState(() {
