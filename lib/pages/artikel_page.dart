@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/detail_artikel.dart';
 import 'package:motionhack/theme/app_color.dart';
 
 class ArtikelPage extends StatelessWidget {
@@ -8,7 +9,7 @@ class ArtikelPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF6F6F6),
+      backgroundColor: const Color(0xFFF6F6F6),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -46,11 +47,21 @@ class ArtikelPage extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              cardArtikel(
-                context,
-                "https://picsum.photos/200/300",
-                "Pembagian Sembako - PKH Bandung",
-                "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan bantuan.",
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailArtikelPage(),
+                    ),
+                  );
+                },
+                child: cardArtikel(
+                  context,
+                  "https://picsum.photos/200/300",
+                  "Pembagian Sembako - PKH Bandung",
+                  "PT Pos Indonesia (Persero) menerima mandat langsung dari Kementerian Sosial (Kemensos) untuk menyalurkan bantuan sosial (bansos) dan Program Keluarga Harapan (PKH) kepada masyarakat yang membutuhkan bantuan.",
+                ),
               ),
               const SizedBox(
                 height: 12,
