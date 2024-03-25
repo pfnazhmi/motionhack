@@ -35,139 +35,238 @@ class _MyDiscover extends State<_Discover> {
   Widget build(BuildContext context) {
     print('_currentPage: $_currentPage');
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200), child: CustomAppBar()),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 14),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+      body: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: 300,
+          child: Stack(children: [
+            Positioned(
+              top: 0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(8.0),
+                  padding:
+                      EdgeInsets.only(top: 20, bottom: 50, left: 20, right: 20),
+                  width: MediaQuery.of(context).size.width,
+                  color: AppColor.primary,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 80),
+                      Row(
+                        children: [
+                          const SizedBox(width: 14.0),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Atur lokasi",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                                Text(
+                                  "Sukapura, Bojongsoang",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 17.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: Image.asset(
+                              'assets/images/bag.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            onPressed: () {
+                              //   Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) => const ChangeProfilePage()));
+                            },
+                          ),
+                          IconButton(
+                            icon: Image.asset(
+                              'assets/images/notify.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            onPressed: () {
+                              //   Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) => const ChangeProfilePage()));
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      contentPadding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0,
-                          0), // Sesuaikan nilai padding secara vertikal
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 190,
+              left: 20,
+              right: 20,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                decoration: new BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: new BorderRadius.all(
+                    Radius.circular(18.0),
+                  ),
+                  border: Border.all(
+                    color:
+                        Colors.grey.shade200, // Set the stroke color to F1F1F1
+                    width: 2, // Choose the width of the stroke
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Search",
+                        hintStyle: GoogleFonts.poppins(
+                          color: Colors.grey.shade500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.grey.shade500,
+                        ),
+                      ),
+                    )),
+              ),
+            ),
+          ]),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 0, bottom: 20),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 170,
+                  child: PageView(
+                    controller: _carouselController,
+                    onPageChanged: (int page) {
+                      setState(() {
+                        _currentPage = page;
+                      });
+                    },
+                    children: [
+                      CarouselItem(
+                          title: 'Ramadhan Sale',
+                          text: 'Dapatkan diskon 60% disetiap pembelian!'),
+                      CarouselItem(
+                          title: 'Ramadhan Sale',
+                          text: 'Dapatkan diskon 60% disetiap pembelian!'),
+                      CarouselItem(
+                          title: 'Ramadhan Sale',
+                          text: 'Dapatkan diskon 60% disetiap pembelian!'),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    3,
+                    (index) => Indicator(
+                      isActive: index == _currentPage,
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 170,
-                child: PageView(
-                  controller: _carouselController,
-                  onPageChanged: (int page) {
-                    setState(() {
-                      _currentPage = page;
-                    });
-                  },
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CarouselItem(
-                        title: 'Ramadhan Sale',
-                        text: 'Dapatkan diskon 60% disetiap pembelian!'),
-                    CarouselItem(
-                        title: 'Ramadhan Sale',
-                        text: 'Dapatkan diskon 60% disetiap pembelian!'),
-                    CarouselItem(
-                        title: 'Ramadhan Sale',
-                        text: 'Dapatkan diskon 60% disetiap pembelian!'),
+                    foodType(
+                      text: "Restoran",
+                      path: 'assets/images/restaurant.png',
+                    ),
+                    foodType(
+                      text: "UMKM",
+                      path: 'assets/images/umkm.png',
+                    ),
+                    foodType(
+                      text: "Pangan",
+                      path: 'assets/images/pangan.png',
+                    ),
+                    foodType(
+                      text: "Roti & Kue",
+                      path: 'assets/images/rotikue.png',
+                    ),
+                    foodType(
+                      text: "Cemilan",
+                      path: 'assets/images/camilan.png',
+                    ),
                   ],
                 ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  3,
-                  (index) => Indicator(
-                    isActive: index == _currentPage,
+                SizedBox(
+                  height: 20,
+                ),
+                FoodSubTitile(
+                  title: "Gak sampai 20 ribu",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 380,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    controller: _foodCarouselController,
+                    children: [
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                    ],
                   ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  foodType(
-                    text: "Restoran",
-                    path: 'assets/images/restaurant.png',
-                  ),
-                  foodType(
-                    text: "UMKM",
-                    path: 'assets/images/umkm.png',
-                  ),
-                  foodType(
-                    text: "Pangan",
-                    path: 'assets/images/pangan.png',
-                  ),
-                  foodType(
-                    text: "Roti & Kue",
-                    path: 'assets/images/rotikue.png',
-                  ),
-                  foodType(
-                    text: "Cemilan",
-                    path: 'assets/images/camilan.png',
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              FoodSubTitile(
-                title: "Gak sampai 20 ribu",
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 380,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  controller: _foodCarouselController,
-                  children: [
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                  ],
+                FoodSubTitile(
+                  title: "Restoran terdekat",
                 ),
-              ),
-              FoodSubTitile(
-                title: "Restoran terdekat",
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 380,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  controller: _foodCarouselController,
-                  children: [
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                    FoodsCarouselItem(
-                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
-                  ],
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 380,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    controller: _foodCarouselController,
+                    children: [
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                      FoodsCarouselItem(
+                          name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ])),
     );
   }
 }
@@ -260,57 +359,62 @@ class CustomAppBar extends StatelessWidget {
           padding: const EdgeInsets.only(top: 0),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Row(
+            child: Column(
               children: [
-                const SizedBox(width: 14.0),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Atur lokasi",
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 16.0,
-                        ),
+                SizedBox(height: 80),
+                Row(
+                  children: [
+                    const SizedBox(width: 14.0),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Atur lokasi",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          Text(
+                            "Sukapura, Bojongsoang",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 17.0,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Sukapura, Bojongsoang",
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 17.0,
-                        ),
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/images/bag.png',
+                        width: 50,
+                        height: 50,
                       ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  icon: Image.asset(
-                    'assets/images/bag.png',
-                    width: 50,
-                    height: 50,
-                  ),
-                  onPressed: () {
-                    //   Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //           builder: (context) => const ChangeProfilePage()));
-                  },
-                ),
-                IconButton(
-                  icon: Image.asset(
-                    'assets/images/notify.png',
-                    width: 50,
-                    height: 50,
-                  ),
-                  onPressed: () {
-                    //   Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //           builder: (context) => const ChangeProfilePage()));
-                  },
+                      onPressed: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => const ChangeProfilePage()));
+                      },
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/images/notify.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                      onPressed: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => const ChangeProfilePage()));
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
