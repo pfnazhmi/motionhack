@@ -17,15 +17,16 @@ class _Discover extends StatefulWidget {
 }
 
 class _MyDiscover extends State<_Discover> {
-  final PageController _controller = PageController(initialPage: 0);
+  final PageController _carouselController = PageController(initialPage: 0);
+  final PageController _foodCarouselController = PageController(initialPage: 0);
   int _currentPage = 0;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
+    _carouselController.addListener(() {
       setState(() {
-        _currentPage = _controller.page!.toInt();
+        _currentPage = _carouselController.page!.toInt();
       });
     });
   }
@@ -39,7 +40,6 @@ class _MyDiscover extends State<_Discover> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 14),
         child: SingleChildScrollView(
-          controller: _controller,
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
@@ -47,24 +47,24 @@ class _MyDiscover extends State<_Discover> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors
-                        .grey[200], // Customize search bar background color
-                    borderRadius:
-                        BorderRadius.circular(8.0), // Customize border radius
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search...',
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                      contentPadding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0,
+                          0), // Sesuaikan nilai padding secara vertikal
                       border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 170, // Adjust height as needed
+                height: 170,
                 child: PageView(
-                  controller: _controller,
+                  controller: _carouselController,
                   onPageChanged: (int page) {
                     setState(() {
                       _currentPage = page;
@@ -122,15 +122,43 @@ class _MyDiscover extends State<_Discover> {
               SizedBox(
                 height: 20,
               ),
-              foodSubTitile(),
+              FoodSubTitile(
+                title: "Gak sampai 20 ribu",
+              ),
               SizedBox(
                 height: 20,
               ),
               SizedBox(
-                height: 300,
-                width: 180, // Adjust height as needed
-                child: PageView(
+                height: 380,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _foodCarouselController,
                   children: [
+                    FoodsCarouselItem(
+                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                    FoodsCarouselItem(
+                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                    FoodsCarouselItem(
+                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                  ],
+                ),
+              ),
+              FoodSubTitile(
+                title: "Restoran terdekat",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 380,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _foodCarouselController,
+                  children: [
+                    FoodsCarouselItem(
+                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
+                    FoodsCarouselItem(
+                        name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
                     FoodsCarouselItem(
                         name: 'Cokelat Lava Cake', price: 'Rp. 15.000'),
                   ],
@@ -144,9 +172,12 @@ class _MyDiscover extends State<_Discover> {
   }
 }
 
-class foodSubTitile extends StatelessWidget {
-  const foodSubTitile({
+class FoodSubTitile extends StatelessWidget {
+  final String title;
+
+  const FoodSubTitile({
     super.key,
+    required this.title,
   });
 
   @override
@@ -155,7 +186,7 @@ class foodSubTitile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Gak sampai 20 ribu",
+          title,
           style: GoogleFonts.poppins(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -242,14 +273,14 @@ class CustomAppBar extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.w900,
-                          fontSize: 14.0,
+                          fontSize: 16.0,
                         ),
                       ),
                       Text(
                         "Sukapura, Bojongsoang",
                         style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 16.0,
+                          fontSize: 17.0,
                         ),
                       ),
                     ],
@@ -341,8 +372,7 @@ class CarouselItem extends StatelessWidget {
                         const Color.fromRGBO(237, 209, 108, 100)),
                     shape: MaterialStateProperty.all<OutlinedBorder>(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Sesuaikan nilai sesuai keinginan Anda
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),
@@ -396,44 +426,55 @@ class FoodsCarouselItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
+      margin: EdgeInsets.only(right: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 200,
-            width: 150,
-            child: ClipPath(
-              clipper: VerticalRoundedRectangleClipper(),
+            height: 250, // Adjust as needed
+            width: 200, // Adjust as needed
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
               child: Image.asset(
-                'assets/images/cake.jpg', // Path to your image
+                'assets/images/cake.jpeg',
                 fit: BoxFit.cover,
               ),
             ),
           ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            width: 200,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  price,
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Image.asset(
+                    'assets/images/heart.png',
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Text(
+            name,
+            style: GoogleFonts.poppins(
+                color: Colors.black54,
+                fontSize: 14,
+                fontWeight: FontWeight.w600),
+          )
         ],
       ),
     );
-  }
-}
-
-class VerticalRoundedRectangleClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    final cornerRadius = 16.0; // Adjust the corner radius as needed
-    final curveHeight = 20.0; // Adjust the curve height as needed
-
-    path.lineTo(0, curveHeight);
-    path.quadraticBezierTo(size.width / 2, 0, size.width, curveHeight);
-    path.lineTo(size.width, size.height - curveHeight);
-    path.quadraticBezierTo(
-        size.width / 2, size.height, 0, size.height - curveHeight);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
   }
 }

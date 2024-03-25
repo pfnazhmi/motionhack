@@ -80,13 +80,13 @@ class _MyNavigationState extends State<MyNavigation>
             icon: _currentIndex == 0 // Check if profile icon is active
                 ? Image.asset(
                     "assets/images/discover_active.png", // Use active profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   )
                 : Image.asset(
                     "assets/images/discover.png", // Use inactive profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   ),
             label: '',
           ),
@@ -94,13 +94,13 @@ class _MyNavigationState extends State<MyNavigation>
             icon: _currentIndex == 1 // Check if profile icon is active
                 ? Image.asset(
                     "assets/images/article_active.png", // Use active profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   )
                 : Image.asset(
                     "assets/images/article.png", // Use inactive profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   ),
             label: '',
           ),
@@ -108,13 +108,13 @@ class _MyNavigationState extends State<MyNavigation>
             icon: _currentIndex == 2 // Check if profile icon is active
                 ? Image.asset(
                     "assets/images/forum_active.png", // Use active profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   )
                 : Image.asset(
                     "assets/images/forum.png", // Use inactive profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   ),
             label: '',
           ),
@@ -122,13 +122,13 @@ class _MyNavigationState extends State<MyNavigation>
             icon: _currentIndex == 3 // Check if profile icon is active
                 ? Image.asset(
                     "assets/images/profile_active.png", // Use active profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   )
                 : Image.asset(
                     "assets/images/profile.png", // Use inactive profile icon
-                    width: 40,
-                    height: 40,
+                    width: 45,
+                    height: 45,
                   ),
             label: '',
           ),
