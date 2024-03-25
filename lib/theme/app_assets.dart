@@ -7,6 +7,7 @@ class AppAssets {
   static const logoMidtrans = 'assets/images/midtrasns.png';
 
   static const iconLocation = 'assets/svgs/icon-loc.svg';
+  static const sukses = 'assets/svgs/sukses.svg';
   static const iconClock = 'assets/svgs/icon-clock.svg';
   static const iconPeople = 'assets/svgs/icon-people.svg';
   static const iconPromo = 'assets/svgs/icon-promo.svg';

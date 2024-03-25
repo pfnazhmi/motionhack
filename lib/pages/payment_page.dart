@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:motionhack/pages/payment_success.dart';
 import 'package:motionhack/theme/app_assets.dart';
 import 'package:motionhack/theme/app_color.dart';
 import 'package:motionhack/widget/button_custom.dart';
@@ -45,34 +46,41 @@ class _PaymentPageState extends State<PaymentPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 24,
-              ),
-              paymentInfo(),
-              const SizedBox(
-                height: 16,
-              ),
-              promo(),
-              const SizedBox(
-                height: 16,
-              ),
-              opsiPengambilan(),
-              const SizedBox(
-                height: 16,
-              ),
-              detailPesanan(context),
-              const SizedBox(
-                height: 16,
-              ),
-              paymentMethod(),
-              const SizedBox(
-                height: 24,
-              ),
-              ButtonCustom(label: "Beli sekarang", onTap: () {}, isExpand: true)
-            ],
-          ),
+          child: Column(children: [
+            const SizedBox(
+              height: 24,
+            ),
+            paymentInfo(),
+            const SizedBox(
+              height: 16,
+            ),
+            promo(),
+            const SizedBox(
+              height: 16,
+            ),
+            opsiPengambilan(),
+            const SizedBox(
+              height: 16,
+            ),
+            detailPesanan(context),
+            const SizedBox(
+              height: 16,
+            ),
+            paymentMethod(),
+            const SizedBox(
+              height: 24,
+            ),
+            ButtonCustom(
+              label: "Beli sekarang",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PaymentSuccessPage()),
+                );
+              },
+              isExpand: true,
+            )
+          ]),
         ),
       ),
     );
