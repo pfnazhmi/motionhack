@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/product_detail_page.dart';
 import 'package:motionhack/theme/app_color.dart';
 
 class DiscoverPage extends StatelessWidget {
@@ -534,14 +535,22 @@ class FoodsCarouselItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 250, // Adjust as needed
-            width: 200, // Adjust as needed
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                'assets/images/cake.jpeg',
-                fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProductDetailPage()));
+            },
+            child: Container(
+              height: 250, // Adjust as needed
+              width: 200, // Adjust as needed
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'assets/images/cake.jpeg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
