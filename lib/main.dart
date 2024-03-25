@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motionhack/pages/artikel_page.dart';
+import 'package:motionhack/pages/payment_page.dart';
 import 'package:motionhack/pages/signin_page.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const ArtikelPage(),
+      home: const PaymentPage(),
     );
   }
 }

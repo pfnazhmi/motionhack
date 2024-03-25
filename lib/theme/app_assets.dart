@@ -8,4 +8,8 @@ class AppAssets {
   static const iconLocation = 'assets/svgs/icon-loc.svg';
   static const iconClock = 'assets/svgs/icon-clock.svg';
   static const iconPeople = 'assets/svgs/icon-people.svg';
+  static const iconPromo = 'assets/svgs/icon-promo.svg';
+  static const iconRightArrow = 'assets/svgs/arrow_right.svg';
+  static const iconDeliv = 'assets/svgs/icon-deliv.svg';
+  static const iconTakeAway = 'assets/svgs/icon-take-away.svg';
 }
