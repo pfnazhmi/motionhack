@@ -76,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
                     height: 24,
                   ),
                   ButtonCustom(
-                    label: "Login sekarang",
+                    label: "Daftar sekarang",
                     onTap: () {},
                     isExpand: true,
                   ),
