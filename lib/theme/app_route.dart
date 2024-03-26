@@ -1,7 +1,7 @@
 class Approute {
   static const String splash = '/splash';
-  static const String onboarding = '/onboarding';
-  static const String discover = '/discover';
+  static const String onboardingPage = '/onboarding_main_page';
+  static const String discover = '/discover_page';
   static const String nav = '/navigation';
   static const String profile = '/profile';
   static const String payment = '/payment';

@@ -33,7 +33,7 @@ class _SigninPageState extends State<SigninPage> {
           DInfo.closeDialog(
             context,
             actionAfterClose: () {
-              Navigator.pushReplacementNamed(context, Approute.discover);
+              Navigator.pushReplacementNamed(context, Approute.nav);
             },
           );
         } else {

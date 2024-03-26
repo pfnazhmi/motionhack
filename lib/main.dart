@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:motionhack/firebase_options.dart';
 import 'package:motionhack/models/user.dart';
 import 'package:motionhack/pages/discover_page.dart';
+import 'package:motionhack/pages/keranjang_page.dart';
 import 'package:motionhack/pages/navigation.dart';
-import 'package:motionhack/pages/onboarding/onboarding_page.dart';
+import 'package:motionhack/pages/onboarding/onboard3.dart';
+import 'package:motionhack/pages/onboarding/onboard2.dart';
+import 'package:motionhack/pages/onboarding/onboard1.dart';
+import 'package:motionhack/pages/onboarding/onboarding_main_page.dart';
 import 'package:motionhack/pages/payment_page.dart';
 import 'package:motionhack/pages/payment_success.dart';
 import 'package:motionhack/pages/profile_page.dart';
@@ -35,14 +39,16 @@ class MyApp extends StatelessWidget {
               if (snapshot.data == null || snapshot.data!.id == null) {
                 return DiscoverPage();
               } else {
-                return SigninPage();
+                return KeranjangPage();
               }
             },
           );
         },
         Approute.splash: (context) => const SplashPage(),
-        Approute.onboarding: (context) => OnboardPage(),
+        Approute.onboardingPage: (context) => OnboardingMain(),
+        //Approute.onboardingContent: (context) => OnboardContent(),
         Approute.signin: (context) => SigninPage(),
+        Approute.nav: (context) => Navigation(),
         Approute.discover: (context) => DiscoverPage(),
         Approute.profile: (context) => ProfilePage(),
         Approute.payment: (context) => PaymentPage(),
