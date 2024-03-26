@@ -131,8 +131,8 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                       IconButton(
                         icon: Image.asset(
                           'assets/images/minus.png',
-                          width: 90,
-                          height: 90,
+                          width: 30,
+                          height: 30,
                         ),
                         onPressed: () => (),
                       ),
@@ -154,7 +154,79 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                     ],
                   ),
                 ],
-              )
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    "assets/images/star.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                  Text(
+                    "4.5",
+                    style: GoogleFonts.poppins(
+                      color: Colors.black87,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    " (30+) ",
+                    style: GoogleFonts.poppins(
+                      color: Colors.black45,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    "See Review",
+                    style: GoogleFonts.poppins(
+                      color: AppColor.primary,
+                      fontSize: 20,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+                style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: AppColor.primary,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/button_bag.png', // Path to your icon image
+                      width: 32, // Adjust the width as needed
+                      height: 32, // Adjust the height as needed
+                    ),
+                    SizedBox(
+                        width: 8), // Adjust the space between icon and text
+                    Text(
+                      'Masukkan keranjang',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
