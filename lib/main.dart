@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:motionhack/firebase_options.dart';
 import 'package:motionhack/models/user.dart';
 import 'package:motionhack/pages/discover_page.dart';
-import 'package:motionhack/pages/keranjang_page.dart';
 import 'package:motionhack/pages/navigation.dart';
 import 'package:motionhack/pages/onboarding/onboarding_main_page.dart';
 import 'package:motionhack/pages/payment_page.dart';
@@ -34,21 +33,21 @@ class MyApp extends StatelessWidget {
             future: Session.getUser(User()),
             builder: (context, AsyncSnapshot<User> snapshot) {
               if (snapshot.data == null || snapshot.data!.id == null) {
-                return Navigation();
+                return const Navigation();
               } else {
-                return SplashPage();
+                return const SplashPage();
               }
             },
           );
         },
         Approute.splash: (context) => const SplashPage(),
-        Approute.onboardingPage: (context) => OnboardingMain(),
-        Approute.signin: (context) => SigninPage(),
-        Approute.nav: (context) => Navigation(),
-        Approute.discover: (context) => DiscoverPage(),
-        Approute.profile: (context) => ProfilePage(),
-        Approute.payment: (context) => PaymentPage(),
-        Approute.paymentSuccess: (context) => PaymentSuccessPage(),
+        Approute.onboardingPage: (context) => const OnboardingMain(),
+        Approute.signin: (context) => const SigninPage(),
+        Approute.nav: (context) => const Navigation(),
+        Approute.discover: (context) => const DiscoverPage(),
+        Approute.profile: (context) => const ProfilePage(),
+        Approute.payment: (context) => const PaymentPage(),
+        Approute.paymentSuccess: (context) => const PaymentSuccessPage(),
       },
     );
   }
