@@ -1,10 +1,13 @@
+import 'package:d_info/d_info.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/pages/nav_pages/discover.dart';
 import 'package:motionhack/pages/signup_page.dart';
+import 'package:motionhack/source/user_source.dart';
 import 'package:motionhack/theme/app_assets.dart';
 import 'package:motionhack/theme/app_color.dart';
+import 'package:motionhack/theme/app_route.dart';
 import 'package:motionhack/widget/button_custom.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
@@ -23,10 +26,20 @@ class _SigninPageState extends State<SigninPage> {
 
   signin(BuildContext context) {
     if (formkey.currentState!.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const Discover()),
-      );
+      UserSource.signIn(controllerEmail.text, controllerPassword.text)
+          .then((response) {
+        if (response['success']) {
+          DInfo.dialogSuccess(context, response['message']);
+          DInfo.closeDialog(
+            context,
+            actionAfterClose: () {
+              Navigator.pushReplacementNamed(context, Approute.discover);
+            },
+          );
+        } else {
+          DInfo.toastError(response['message']);
+        }
+      });
     }
   }
 
@@ -89,10 +102,7 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                   ButtonCustom(
                     label: "Login sekarang",
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Discover()));
-                    },
+                    onTap: () => signin(context),
                     isExpand: true,
                   ),
                   const SizedBox(

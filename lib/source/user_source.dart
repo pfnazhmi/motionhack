@@ -15,8 +15,6 @@ class UserSource {
       response['success'] = true;
       response['message'] = 'Sign In Success';
       String uid = credential.user!.uid;
-      User user = await getWhereId(uid);
-      Session.saveUser(user);
     } on auth.FirebaseAuthException catch (e) {
       response['success'] = false;
 
@@ -29,12 +27,5 @@ class UserSource {
       }
     }
     return response;
-  }
-
-  static Future<User> getWhereId(String id) async {
-    DocumentReference<Map<String, dynamic>> ref =
-        FirebaseFirestore.instance.collection('User').doc(id);
-    DocumentSnapshot<Map<String, dynamic>> doc = await ref.get();
-    return User.fromJson(doc.data()!);
   }
 }
