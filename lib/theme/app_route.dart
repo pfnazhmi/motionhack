@@ -11,4 +11,5 @@ class Approute {
   static const String detailArtikel = '/detail_artikel';
   static const String signin = '/signin_page';
   static const String detailProduk = '/product_detail_page';
+  static const String keranjang = '/keranjang_page';
 }

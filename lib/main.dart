@@ -5,9 +5,6 @@ import 'package:motionhack/models/user.dart';
 import 'package:motionhack/pages/discover_page.dart';
 import 'package:motionhack/pages/keranjang_page.dart';
 import 'package:motionhack/pages/navigation.dart';
-import 'package:motionhack/pages/onboarding/onboard3.dart';
-import 'package:motionhack/pages/onboarding/onboard2.dart';
-import 'package:motionhack/pages/onboarding/onboard1.dart';
 import 'package:motionhack/pages/onboarding/onboarding_main_page.dart';
 import 'package:motionhack/pages/payment_page.dart';
 import 'package:motionhack/pages/payment_success.dart';
@@ -37,7 +34,7 @@ class MyApp extends StatelessWidget {
             future: Session.getUser(User()),
             builder: (context, AsyncSnapshot<User> snapshot) {
               if (snapshot.data == null || snapshot.data!.id == null) {
-                return DiscoverPage();
+                return Navigation();
               } else {
                 return KeranjangPage();
               }
@@ -46,7 +43,6 @@ class MyApp extends StatelessWidget {
         },
         Approute.splash: (context) => const SplashPage(),
         Approute.onboardingPage: (context) => OnboardingMain(),
-        //Approute.onboardingContent: (context) => OnboardContent(),
         Approute.signin: (context) => SigninPage(),
         Approute.nav: (context) => Navigation(),
         Approute.discover: (context) => DiscoverPage(),
