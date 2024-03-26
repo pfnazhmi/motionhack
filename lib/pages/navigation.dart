@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/pages/artikel_page.dart';
 import 'package:motionhack/pages/discover_page.dart';
+import 'package:motionhack/pages/forum_page.dart';
 import 'package:motionhack/pages/profile_page.dart';
 
 class Navigation extends StatelessWidget {
@@ -59,7 +60,7 @@ class _MyNavigationState extends State<MyNavigation>
         children: const [
           DiscoverPage(),
           ArtikelPage(),
-          // ForumPage(),
+          ForumPage(),
           ProfilePage(),
         ],
         onPageChanged: (index) {

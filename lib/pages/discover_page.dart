@@ -106,12 +106,7 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                               width: 50,
                               height: 50,
                             ),
-                            onPressed: () {
-                              //   Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) => const ChangeProfilePage()));
-                            },
+                            onPressed: () {},
                           ),
                         ],
                       ),
@@ -132,9 +127,8 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                     Radius.circular(18.0),
                   ),
                   border: Border.all(
-                    color:
-                        Colors.grey.shade200, // Set the stroke color to F1F1F1
-                    width: 2, // Choose the width of the stroke
+                    color: Colors.grey.shade200,
+                    width: 2,
                   ),
                 ),
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -398,12 +392,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 50,
                         height: 50,
                       ),
-                      onPressed: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => const ChangeProfilePage()));
-                      },
+                      onPressed: () {},
                     ),
                     IconButton(
                       icon: Image.asset(
@@ -411,12 +400,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 50,
                         height: 50,
                       ),
-                      onPressed: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => const ChangeProfilePage()));
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -546,8 +530,8 @@ class FoodsCarouselItem extends StatelessWidget {
                       builder: (context) => const ProductDetailPage()));
             },
             child: Container(
-              height: 250, // Adjust as needed
-              width: 200, // Adjust as needed
+              height: 250,
+              width: 200,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
