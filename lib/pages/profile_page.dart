@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/edit_profile_page.dart';
 import 'package:motionhack/theme/app_color.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -41,7 +42,7 @@ class _MyProfilePage extends State<_ProfilePage> {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 300,
+          height: 280,
           child: Stack(children: [
             Positioned(
               top: 0,
@@ -87,7 +88,7 @@ class _MyProfilePage extends State<_ProfilePage> {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -115,25 +116,33 @@ class _MyProfilePage extends State<_ProfilePage> {
                       ),
                     ),
                   ),
-                  Center(
-                    child: Container(
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: AppColor.primary,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfilePage()));
+                    },
+                    child: Center(
+                      child: Container(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: AppColor.primary,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 14),
-                          child: Text(
-                            'Edit profile',
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 14),
+                            child: Text(
+                              'Edit profile',
+                              style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                             ),
                           ),

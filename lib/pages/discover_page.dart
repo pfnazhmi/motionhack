@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/payment_page.dart';
 import 'package:motionhack/pages/product_detail_page.dart';
 import 'package:motionhack/theme/app_color.dart';
 
@@ -36,6 +37,7 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
   Widget build(BuildContext context) {
     print('_currentPage: $_currentPage');
     return Scaffold(
+      backgroundColor: AppColor.dust,
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -92,10 +94,11 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                               height: 50,
                             ),
                             onPressed: () {
-                              //   Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) => const ChangeProfilePage()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentPage()));
                             },
                           ),
                           IconButton(
@@ -104,12 +107,7 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                               width: 50,
                               height: 50,
                             ),
-                            onPressed: () {
-                              //   Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) => const ChangeProfilePage()));
-                            },
+                            onPressed: () {},
                           ),
                         ],
                       ),
@@ -130,9 +128,8 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                     Radius.circular(18.0),
                   ),
                   border: Border.all(
-                    color:
-                        Colors.grey.shade200, // Set the stroke color to F1F1F1
-                    width: 2, // Choose the width of the stroke
+                    color: Colors.grey.shade200,
+                    width: 2,
                   ),
                 ),
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -283,25 +280,28 @@ class FoodSubTitile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: GoogleFonts.poppins(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: Text(
-            "Lihat semua",
+    return Container(
+      padding: EdgeInsets.only(right: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
             style: GoogleFonts.poppins(
-              color: AppColor.primary,
-              fontWeight: FontWeight.w600,
-            ),
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           ),
-        )
-      ],
+          GestureDetector(
+            onTap: () {},
+            child: Text(
+              "Lihat semua",
+              style: GoogleFonts.poppins(
+                color: AppColor.primary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -396,12 +396,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 50,
                         height: 50,
                       ),
-                      onPressed: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => const ChangeProfilePage()));
-                      },
+                      onPressed: () {},
                     ),
                     IconButton(
                       icon: Image.asset(
@@ -409,12 +404,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 50,
                         height: 50,
                       ),
-                      onPressed: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => const ChangeProfilePage()));
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -544,8 +534,8 @@ class FoodsCarouselItem extends StatelessWidget {
                       builder: (context) => const ProductDetailPage()));
             },
             child: Container(
-              height: 250, // Adjust as needed
-              width: 200, // Adjust as needed
+              height: 250,
+              width: 200,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
