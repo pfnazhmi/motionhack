@@ -279,25 +279,28 @@ class FoodSubTitile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: GoogleFonts.poppins(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: Text(
-            "Lihat semua",
+    return Container(
+      padding: EdgeInsets.only(right: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
             style: GoogleFonts.poppins(
-              color: AppColor.primary,
-              fontWeight: FontWeight.w600,
-            ),
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           ),
-        )
-      ],
+          GestureDetector(
+            onTap: () {},
+            child: Text(
+              "Lihat semua",
+              style: GoogleFonts.poppins(
+                color: AppColor.primary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
