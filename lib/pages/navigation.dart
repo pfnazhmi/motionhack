@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/artikel_page.dart';
 import 'package:motionhack/pages/discover_page.dart';
 import 'package:motionhack/pages/profile_page.dart';
 
@@ -57,7 +58,7 @@ class _MyNavigationState extends State<MyNavigation>
         controller: _pageController,
         children: const [
           DiscoverPage(),
-          // ArticlePage(),
+          ArtikelPage(),
           // ForumPage(),
           ProfilePage(),
         ],

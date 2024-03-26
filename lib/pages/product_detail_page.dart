@@ -34,19 +34,20 @@ class CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                icon: Image.asset(
-                  'assets/images/left_arrow.png',
-                  width: 30,
-                  height: 30,
-                ),
-                onPressed: () => Navigator.pop(context),
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ), // Icon back
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
               Text(
                 "Detail Makanan",
                 style: GoogleFonts.poppins(
-                  color: AppColor.dark,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(width: 50),
@@ -103,7 +104,7 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                 "Chocolate lava cake",
                 style: GoogleFonts.poppins(
                   color: AppColor.dark,
-                  fontSize: 28,
+                  fontSize: 24,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -111,7 +112,7 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                 "The Harvest Cake",
                 style: GoogleFonts.poppins(
                   color: AppColor.dark,
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -122,7 +123,7 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                     "Rp. 20.000",
                     style: GoogleFonts.poppins(
                       color: AppColor.dark,
-                      fontSize: 24,
+                      fontSize: 20,
                     ),
                   ),
                   Row(
@@ -131,8 +132,8 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                       IconButton(
                         icon: Image.asset(
                           'assets/images/minus.png',
-                          width: 30,
-                          height: 30,
+                          width: 24,
+                          height: 24,
                         ),
                         onPressed: () => (),
                       ),
@@ -140,14 +141,14 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                         "1",
                         style: GoogleFonts.poppins(
                           color: AppColor.dark,
-                          fontSize: 24,
+                          fontSize: 20,
                         ),
                       ),
                       IconButton(
                         icon: Image.asset(
                           'assets/images/plus.png',
-                          width: 30,
-                          height: 30,
+                          width: 24,
+                          height: 24,
                         ),
                         onPressed: () => (),
                       ),
@@ -160,28 +161,28 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                 children: [
                   Image.asset(
                     "assets/images/star.png",
-                    width: 50,
-                    height: 50,
+                    width: 40,
+                    height: 40,
                   ),
                   Text(
                     "4.5",
                     style: GoogleFonts.poppins(
                       color: Colors.black87,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                   Text(
                     " (30+) ",
                     style: GoogleFonts.poppins(
                       color: Colors.black45,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                   Text(
                     "See Review",
                     style: GoogleFonts.poppins(
                       color: AppColor.primary,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   )
                 ],
@@ -193,7 +194,7 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
                 style: GoogleFonts.poppins(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
               SizedBox(
@@ -218,7 +219,8 @@ class _MyProductDetailPage extends State<_ProductDetailPage> {
                       'Masukkan keranjang',
                       style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
                       ),
                     ),
                   ],

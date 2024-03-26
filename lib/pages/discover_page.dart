@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/payment_page.dart';
 import 'package:motionhack/pages/product_detail_page.dart';
 import 'package:motionhack/theme/app_color.dart';
 
@@ -36,6 +37,7 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
   Widget build(BuildContext context) {
     print('_currentPage: $_currentPage');
     return Scaffold(
+      backgroundColor: AppColor.dust,
       body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -91,10 +93,11 @@ class _MyDiscoverPage extends State<_DiscoverPage> {
                               height: 50,
                             ),
                             onPressed: () {
-                              //   Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) => const ChangeProfilePage()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentPage()));
                             },
                           ),
                           IconButton(
