@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.data == null || snapshot.data!.id == null) {
                 return Navigation();
               } else {
-                return KeranjangPage();
+                return SplashPage();
               }
             },
           );

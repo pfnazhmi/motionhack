@@ -59,8 +59,8 @@ class _MyNavigationState extends State<MyNavigation>
         controller: _pageController,
         children: const [
           DiscoverPage(),
-          // ArticlePage(),
-          // ForumPage(),
+          ArtikelPage(),
+          ForumPage(),
           ProfilePage(),
         ],
         onPageChanged: (index) {

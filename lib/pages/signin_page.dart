@@ -2,7 +2,6 @@ import 'package:d_info/d_info.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:motionhack/pages/nav_pages/discover.dart';
 import 'package:motionhack/pages/signup_page.dart';
 import 'package:motionhack/source/user_source.dart';
 import 'package:motionhack/theme/app_assets.dart';
