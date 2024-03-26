@@ -1,7 +1,7 @@
 
 # PalsFoods app
 
-PalsFoods adalah aplikasi untuk melakukan pembelian makanan dan pangan sisa, user dapat login dan melihat makanan ataupun pangan yang tersedia. user dapat memesan makanan atau pangan yang tersedia. user juga dapat melihat beberapa informasi terkait bantuan pangan dan juga dapat memposting aspirasi user di halaman forum.
+PalsFoods adalah aplikasi untuk melakukan pembelian makanan dan pangan sisa dan juga sebagai wadah untuk mengurangi sampah makanan yang mana memberikan layanan untuk restoran, UMKM dan lain nya. User dapat login dan melihat makanan ataupun pangan yang tersedia. user dapat memesan makanan atau pangan yang tersedia. user juga dapat melihat beberapa informasi terkait bantuan pangan dan juga dapat memposting aspirasi user di halaman forum.
 
 ## Installation
 
