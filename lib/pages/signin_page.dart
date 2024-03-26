@@ -1,9 +1,13 @@
+import 'package:d_info/d_info.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/nav_pages/discover.dart';
 import 'package:motionhack/pages/signup_page.dart';
+import 'package:motionhack/source/user_source.dart';
 import 'package:motionhack/theme/app_assets.dart';
 import 'package:motionhack/theme/app_color.dart';
+import 'package:motionhack/theme/app_route.dart';
 import 'package:motionhack/widget/button_custom.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
@@ -18,113 +22,143 @@ class _SigninPageState extends State<SigninPage> {
   final controllerEmail = TextEditingController();
   bool isPasswordHidden = true;
   final controllerPassword = TextEditingController();
+  final formkey = GlobalKey<FormState>();
+
+  signin(BuildContext context) {
+    if (formkey.currentState!.validate()) {
+      UserSource.signIn(controllerEmail.text, controllerPassword.text)
+          .then((response) {
+        if (response['success']) {
+          DInfo.dialogSuccess(context, response['message']);
+          DInfo.closeDialog(
+            context,
+            actionAfterClose: () {
+              Navigator.pushReplacementNamed(context, Approute.nav);
+            },
+          );
+        } else {
+          DInfo.toastError(response['message']);
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    controllerEmail.dispose();
+    controllerPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 106,
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Nama App.",
-                    style: GoogleFonts.poppins(
-                        fontSize: 34,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.primary),
+      body: Form(
+        key: formkey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 106,
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                inputEmail(),
-                const SizedBox(
-                  height: 16,
-                ),
-                inputPassword(),
-                const SizedBox(
-                  height: 16,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "Lupa Password?",
-                    style: GoogleFonts.poppins(
-                        //decoration: TextDecoration.underline,
-                        fontSize: 12,
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Nama App.",
+                      style: GoogleFonts.poppins(
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primary),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  inputEmail(),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  inputPassword(),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Lupa Password?",
+                      style: GoogleFonts.poppins(
+                          //decoration: TextDecoration.underline,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: AppColor.primary),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ButtonCustom(
+                    label: "Login sekarang",
+                    onTap: () => signin(context),
+                    isExpand: true,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                      text: 'Belum Punya Akun? ',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: AppColor.primary),
+                        color: const Color(0xFFAFAFAF),
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Daftar',
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            //decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.primary,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => SignupPage()));
+                            },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                ButtonCustom(
-                  label: "Login sekarang",
-                  onTap: () {},
-                  isExpand: true,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text.rich(
-                  TextSpan(
-                    text: 'Belum Punya Akun? ',
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Text(
+                    "Atau",
                     style: GoogleFonts.poppins(
                       fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFFAFAFAF),
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF444444),
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'Daftar',
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          //decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.primary,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const SignupPage()));
-                          },
-                      ),
-                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Text(
-                  "Atau",
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xFF444444),
+                  const SizedBox(
+                    height: 24,
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                signWithApple(),
-                const SizedBox(
-                  width: 12,
-                ),
-                signWithGoogle(),
-                const SizedBox(
-                  width: 12,
-                ),
-                signWithPhone(),
-              ],
+                  signWithApple(),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  signWithGoogle(),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  signWithPhone(),
+                ],
+              ),
             ),
           ),
         ),
@@ -202,7 +236,8 @@ class _SigninPageState extends State<SigninPage> {
     return TextFormField(
       controller: controllerPassword,
       obscureText: isPasswordHidden,
-      validator: (value) => value == "" ? "Masukan, jangan kosong!" : null,
+      validator: (value) =>
+          value == "" ? 'Kamu harus mengisi username dan password' : null,
       decoration: InputDecoration(
         isDense: true,
         filled: true,
@@ -248,7 +283,8 @@ class _SigninPageState extends State<SigninPage> {
   TextFormField inputEmail() {
     return TextFormField(
       controller: controllerEmail,
-      validator: (value) => value == "" ? "Masukan, jangan kosong!" : null,
+      validator: (value) =>
+          value == "" ? 'Kamu harus mengisi username dan password' : null,
       decoration: InputDecoration(
           isDense: true,
           filled: true,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/pages/nav_pages/discover.dart';
+import 'package:motionhack/pages/navigation.dart';
 import 'package:motionhack/theme/app_assets.dart';
 import 'package:motionhack/theme/app_color.dart';
 import 'package:motionhack/widget/button_custom.dart';
@@ -56,7 +58,10 @@ class PaymentSuccessPage extends StatelessWidget {
             child: ButtonCustom(
               label: "Kembali ke beranda",
               //Sementara aja
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Navigation()));
+              },
               isExpand: true,
             ),
           )

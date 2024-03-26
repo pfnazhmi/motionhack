@@ -5,6 +5,7 @@ class AppAssets {
   static const logoApple = 'assets/images/logo_apple.png';
   static const logoGoogle = 'assets/images/logo_google.png';
   static const logoMidtrans = 'assets/images/midtrasns.png';
+  static const logoApp = 'assets/images/app_logo.png';
 
   static const iconLocation = 'assets/svgs/icon-loc.svg';
   static const sukses = 'assets/svgs/sukses.svg';
@@ -14,4 +15,6 @@ class AppAssets {
   static const iconRightArrow = 'assets/svgs/arrow_right.svg';
   static const iconDeliv = 'assets/svgs/icon-deliv.svg';
   static const iconTakeAway = 'assets/svgs/icon-take-away.svg';
+  static const icontambah = 'assets/svgs/tambah.svg';
+  static const iconKurang = 'assets/svgs/kurang.svg';
 }

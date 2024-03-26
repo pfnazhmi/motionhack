@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "358708930719",
+    "project_id": "motionhack-11",
+    "storage_bucket": "motionhack-11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358708930719:android:a20ab450cc0be2ea6c9aaa",
+        "android_client_info": {
+          "package_name": "com.new.drexapp.motionhack11"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBymCgHQVx2XWvZcuIsUKLFU6vdC41l28Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
