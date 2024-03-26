@@ -58,8 +58,12 @@ Password : testing123
 
 
 
-
-
+#Authors
+Aplikasi ini dibuat oleh kelompok 11, dengan anggota:
+1. Pahala Fawwaz Nazhmi - Mobile Programmer
+2. Muhammad Abiyyu Al-Ghifari - Mobile Programmer
+3. Tiara Sabrina - UI/UX
+4. Annisa Izzatul Latifa - UI/UX
 
 
 
